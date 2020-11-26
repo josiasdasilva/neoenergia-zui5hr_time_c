@@ -52,6 +52,12 @@ sap.ui.define([
 						case oResponse.headers.location.includes("CabecalhoTratamentoPontoSet"):
 							msgText = "Marcações realizadas com sucesso!";
 							break;
+						case oResponse.headers.location.includes("BancoHorasSet"):
+							msgText = "Horas de Banco inserido com sucesso!";
+							break;
+						case oResponse.headers.location.includes("HorasExtrasSet"):
+							msgText = "Horas Extra inserida com sucesso!";
+							break;
 						default:
 							msgText = "Alteração Realizada com sucesso!";
 					}
@@ -917,7 +923,7 @@ sap.ui.define([
 			};
 			var param = "/BancoHorasSet('" + oHeader.NumeroPessoal + "')";
 			sap.ui.core.BusyIndicator.show();
-			this.sendUpdateModel(obj, param);
+			this.sendCreateModel(obj, param);
 
 		},
 
@@ -935,7 +941,7 @@ sap.ui.define([
 
 			var param = "/HorasExtrasSet(PERNR='" + oHeader.NumeroPessoal + "',DATA='" + oData.Data + "')";
 			sap.ui.core.BusyIndicator.show();
-			this.sendUpdateModel(obj, param);
+			this.sendCreateModel(obj, param);
 
 		},
 
