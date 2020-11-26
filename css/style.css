@@ -1,0 +1,23 @@
+/* Enter your custom styles here */
+.sapUxAPObjectPageLayout .sapUxAPObjectPageFooter{
+  margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+}
+.sapUxAPObjectPageSubSectionHeader{
+  display:none;
+}
+.sapUxAPObjectPageLayout .sapUxAPObjectPageFooter .sapUxAPObjectPageFloatingFooter {
+    position: absolute;
+    bottom: 0;
+    border-radius:0;
+}
+.sapContrast.sapUxAPObjectPageFooter .sapUxAPObjectPageFloatingFooter{
+  background: rgba(47,60,72);
+}
+
+.disablekb input {
+ pointer-events: none;
+ color: transparent;
+ text-shadow: 0 0 0 gray;
+}

@@ -1,0 +1,121 @@
+{
+    "resources": [
+        {
+            "name": "neo-app.json"
+        },
+        {
+            "name": "css/style.css"
+        },
+        {
+            "name": "index.html"
+        },
+        {
+            "name": "Component.js"
+        },
+        {
+            "name": "localService/metadata.xml"
+        },
+        {
+            "name": "package.json"
+        },
+        {
+            "name": ".user.project.json"
+        },
+        {
+            "name": "package-lock.json"
+        },
+        {
+            "name": "model/models.js"
+        },
+        {
+            "name": "webServices/connections.js"
+        },
+        {
+            "name": ".che/project.json"
+        },
+        {
+            "name": "controller/Dialog1.js"
+        },
+        {
+            "name": "controller/utilities.js"
+        },
+        {
+            "name": "controller/ExcluirMarcacoes.js"
+        },
+        {
+            "name": "controller/Popover1.js"
+        },
+        {
+            "name": "controller/Dialog2.js"
+        },
+        {
+            "name": "controller/Dialog4.js"
+        },
+        {
+            "name": "controller/TratamentoDoPonto.controller.js"
+        },
+        {
+            "name": "controller/Dialog5.js"
+        },
+        {
+            "name": "controller/Dialog11.js"
+        },
+        {
+            "name": "controller/Popover2.js"
+        },
+        {
+            "name": "serviceBinding.js"
+        },
+        {
+            "name": ".project.json"
+        },
+        {
+            "name": "view/ExcluirMarcacoes.fragment.xml"
+        },
+        {
+            "name": "view/Popover2.fragment.xml"
+        },
+        {
+            "name": "view/Popover1.fragment.xml"
+        },
+        {
+            "name": "view/Dialog2.fragment.xml"
+        },
+        {
+            "name": "view/Dialog1.fragment.xml"
+        },
+        {
+            "name": "view/Dialog4.fragment.xml"
+        },
+        {
+            "name": "view/Dialog11.fragment.xml"
+        },
+        {
+            "name": "view/TratamentoDoPonto.view.xml"
+        },
+        {
+            "name": "view/Dialog5.fragment.xml"
+        },
+        {
+            "name": "dist/di.code-validation.core_issues.json"
+        },
+        {
+            "name": "Gruntfile.js"
+        },
+        {
+            "name": "manifest.json"
+        },
+        {
+            "name": "Component-preload.js",
+            "merged": true
+        },
+        {
+            "name": "i18n/i18n.properties",
+            "raw": "i18n/i18n.properties"
+        },
+        {
+            "name": "resources.json",
+            "merged": true
+        }
+    ]
+}

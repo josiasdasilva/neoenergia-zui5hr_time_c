@@ -1,0 +1,19 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.neo.ZODHR_SS_TIME_C.controller.Dialog2" xmlns="sap.m">
+    <Dialog horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="Motivo Nova Marcação" type="Standard" verticalScrolling="true">
+        <content>
+            <ComboBox items="{justificationData>/}" selectionChange="_onSelectJustification" id="justificationCombobox" selectedKey="" placeholder="Selecionar Justificativa..." editable="true" enabled="true" visible="true" width="auto" valueState="None" maxWidth="100%" class="sapUiResponsiveMargin">
+                <items>
+                    <core:Item text="{justificationData>GTEXT}" enabled="true" key="{justificationData>ABWGR}"/>
+                </items>
+            </ComboBox>
+        </content>
+        <beginButton/>
+        <buttons>
+            <Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress"/>
+            <Button text="Cancelar" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false" press="_onButtonPress1"/>
+        </buttons>
+        <customHeader/>
+        <endButton/>
+        <subHeader/>
+    </Dialog>
+</core:FragmentDefinition>

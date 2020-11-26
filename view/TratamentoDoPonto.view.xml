@@ -1,0 +1,186 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" controllerName="com.neo.ZODHR_SS_TIME_C.controller.TratamentoDoPonto" xmlns:uxap="sap.uxap"
+	xmlns="sap.m" xmlns:layout="sap.ui.layout" xmlns:fb="sap.ui.comp.filterbar" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<App id="tratamento">
+		<pages>
+			<Page showHeader="false" title="Tratamento do Ponto">
+				<ObjectHeader id="oh1" responsive="true" intro="N. Pessoal: {headerData>/NumeroPessoal}" title="{headerData>/Nome}" showMarkers="false"
+					markFlagged="true" markFavorite="true" backgroundDesign="Translucent" class="sapUiResponsivePadding--header">
+					<ObjectAttribute title="Email" text="{headerData>/Email}"/>
+					<ObjectAttribute title="Dados Organizacionais"/>
+					<ObjectAttribute title="Area RH" text="{headerData>/WerksDesc}"/>
+					<ObjectAttribute title="UniOrg" text="{headerData>/OrgehDesc}"/>
+					<headerContainer>
+						<IconTabBar id="itb1" upperCase="true" class="sapUiResponsiveContentPadding">
+							<items>
+								<IconTabFilter key="1" text="Tratamento do Ponto Colaborador">
+									<VBox>
+										<FlexBox alignItems="Start" justifyContent="Start" direction="Row" class="sapUiResponsiveMargin">
+											<items>
+												<Label text="Filtro por Período:" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="false"
+													class="sapUiTinyMarginTop"/>
+												<DatePicker id="dtFiltro" change="onDateChange" valueFormat="MM.yyyy" displayFormat="MM.yyyy" placeholder="mm.aaaa" width="110px"
+													class="sapUiSmallMarginBeginEnd" visible="false"/>
+												<Button text="Buscar" type="Emphasized" press="onFiltrar" width="80px" class="sapUiSmallMarginEnd" visible="false"/>
+												<Label text="" id="txtPeriodo" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="false"
+													class="sapUiTinyMarginTop"/>
+
+												<SearchField placeholder="Descrição da ocorrência" liveChange="handleSearch" width="100%"></SearchField>
+											</items>
+										</FlexBox>
+										<Table id="PointTreatmentTable" selectionChange="_onPointTreatmentTableSelectionChange" items="{pointTreatmentData>/}" width="1146px"
+											noDataText="No data" mode="MultiSelect" showSeparators="All" growing="false" class="sapUiResponsiveMargin">
+											<infoToolbar>
+												<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+													<content>
+														<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</content>
+												</Toolbar>
+											</infoToolbar>
+											<headerToolbar/>
+											<columns>
+												<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Data" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Dia" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Horário Teórico" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Marcações" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<!--
+COMENTAR COLUNA OCORRENCIA - TIAGO
+												<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Ocorrência" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Apuração" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+-->
+												<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Descrição" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+												<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+													<header>
+														<Text text="Aguardando aprovação" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+													</header>
+													<footer/>
+												</Column>
+											</columns>
+											<items>
+												<ColumnListItem visible="{pointTreatmentData>visible}" type="Active">
+													<cells>
+														<Text text="{pointTreatmentData>DATADISPLAY}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"
+															visible="true"/>
+														<Text text="{pointTreatmentData>DIA_SEM}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														<Text text="{pointTreatmentData>HR_TEOR}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+														<Text text="{pointTreatmentData>MARCACOES}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit"
+															visible="true"/>
+														<!--
+INICIO - COMENTAR COLUNA OCORRENCIA - TIAGO
+														<ObjectStatus text="{pointTreatmentData>OCORRENCIA}" state="Error" visible="true"/>
+														<Text text="{pointTreatmentData>APUR}" width="auto" maxLines="3" wrapping="true" textAlign="Begin" textDirection="Inherit" visible="true"/>
+INICIO - COMENTAR COLUNA OCORRENCIA - TIAGO
+-->
+														<ObjectStatus text="{pointTreatmentData>DESCR_OCOR}" state="Error" visible="true"/>
+														<CheckBox enabled="false" selected="{pointTreatmentData>AGUARD_APROV}"/>
+													</cells>
+												</ColumnListItem>
+											</items>
+										</Table>
+									</VBox>
+								</IconTabFilter>
+								<IconTabFilter key="2" text="Banco Horas" visible="false">
+									<Table items="{bancoDeHorasData>/}" noDataText="No data" mode="None" showSeparators="All" growing="false" growingThreshold="20"
+										growingScrollToLoad="true" class="sapUiResponsiveMargin">
+										<infoToolbar>
+											<Toolbar width="100%" height="auto" design="Auto" visible="false" enabled="true">
+												<content>
+													<Label text="Label" design="Standard" width="100%" required="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</content>
+											</Toolbar>
+										</infoToolbar>
+										<headerToolbar/>
+										<columns>
+											<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+												<header>
+													<Text text="Saldo B.H. Anterior" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</header>
+												<footer/>
+											</Column>
+											<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+												<header>
+													<Text text="Saldo B.H. {bancoDeHorasData>/0/DATADISPLAY}" width="auto" maxLines="1" wrapping="false" textAlign="Begin"
+														textDirection="Inherit" visible="true"/>
+												</header>
+												<footer/>
+											</Column>
+											<Column width="auto" hAlign="Center" vAlign="Top" minScreenWidth="Tablet" demandPopin="true" popinDisplay="Inline" mergeDuplicates="false">
+												<header>
+													<Text text="Saldo B.H. Acumulado" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit" visible="true"/>
+												</header>
+												<footer/>
+											</Column>
+										</columns>
+										<items>
+											<ColumnListItem type="Active">
+												<cells>
+													<Text text="{bancoDeHorasData>SD_BH_ANT}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
+														visible="true"/>
+													<Link text="{bancoDeHorasData>SD_BH_MES}" textAlign="Begin" width="auto" target="_blank" wrapping="false" enabled="true" visible="true"
+														emphasized="false" subtle="false" press="_onLinkPress"/>
+													<Text text="{bancoDeHorasData>SD_BH_ACU}" width="auto" maxLines="1" wrapping="false" textAlign="Begin" textDirection="Inherit"
+														visible="true"/>
+												</cells>
+											</ColumnListItem>
+										</items>
+									</Table>
+								</IconTabFilter>
+							</items>
+						</IconTabBar>
+					</headerContainer>
+				</ObjectHeader>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer width=""/>
+						<!--INICIO BOTOES NOVOS - TIAGO-->
+						<Button id="overTime" text="Lançar Hrs.Extras" type="Emphasized" iconFirst="true" width="auto" enabled="false" visible="true"
+							iconDensityAware="false" press="_onButtonPress"/>
+						<Button id="bankHour" text="Lançar Hrs.Banco" type="Emphasized" iconFirst="true" width="auto" enabled="false" visible="true"
+							iconDensityAware="false" press="_onButtonPress"/>
+						<!--FIM BOTOES NOVOS - TIAGO-->
+						<Button id="justification" text="Justificar Ausência" type="Emphasized" iconFirst="true" width="auto" enabled="false" visible="true"
+							iconDensityAware="false" press="_onButtonPress"/>
+						<Button id="editMarks" text="Inserir Marcações" type="Emphasized" iconFirst="true" width="auto" enabled="false" visible="true"
+							iconDensityAware="false" press="_onButtonPress1"/>
+						<Button id="excluirMarks" text="Excluir Marcação" type="Emphasized" iconFirst="true" width="auto" enabled="false" visible="true"
+							iconDensityAware="false" press="_onExcluirMarksButtonPress"/>
+					</Toolbar>
+				</footer>
+			</Page>
+		</pages>
+	</App>
+</mvc:View>

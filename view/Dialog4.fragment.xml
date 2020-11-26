@@ -1,0 +1,56 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" xmlns="sap.m" controllerName="com.neo.ZODHR_SS_TIME_G.controller.Dialog4">
+	<Dialog horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="Lançamento Hrs Extras" type="Standard"
+		verticalScrolling="true" class="sapUiResponsiveContentPadding">
+		<content>
+			<VBox>
+				<HBox alignItems="Center">
+					<Label text="Tipo de Presença" width="150px" required="true"/>
+					<ComboBox id="tpPresenca" items="{tpPres>/table}" change="_onSelectTpPres" editable="true" enabled="true" visible="true" width="250px" valueState="None"
+						maxWidth="90%" required="true">
+						<items>
+							<core:Item text="{tpPres>Value}" enabled="true" key="{tpPres>Key}"/>
+						</items>
+					</ComboBox>
+				</HBox>
+				<HBox alignItems="Center">
+					<Label text="Matricula" width="150px"/>
+					<Input id="idPernr" textAlign="Center" width="150px" type="Text" showValueHelp="false" enabled="false"/>
+				</HBox>
+				<HBox alignItems="Center">
+					<Label text="Data" width="150px" required="true"/>
+					<DatePicker id="idData" valueFormat="yyyyMMdd" width="225px" required="true"/>
+				</HBox>
+				<HBox alignItems="Center">
+					<Label text="Horas" width="150px" required="true"/>
+					<TimePicker id="idHrsDe" valueFormat="HH:mm" width="110px" displayFormat="HH:mm" change="handleChange" placeholder="Entre com Data Início"
+						required="true"/>
+					<Text text=" - "/>
+					<TimePicker id="idHrsAte" valueFormat="HH:mm" width="110px" displayFormat="HH:mm" change="handleChange" placeholder="Entre com Data Fim"
+						required="true"/>
+				</HBox>
+				<HBox alignItems="Center">
+					<CheckBox id="idDiaAnt" text="Dia Ant." selected="false" width="150px"/>
+				</HBox>
+				<HBox alignItems="Center">
+					<Label text="Tipo Remuneração" width="150px"/>
+					<ComboBox items="{tpRemurData>/}" change="_onSelectTpRemur" editable="true" enabled="true" visible="true" width="250px" valueState="None"
+						maxWidth="90%">
+						<items>
+							<core:Item text="{tpRemurData>TXT}" enabled="true" key="{tpRemurData>VME}"/>
+						</items>
+					</ComboBox>
+				</HBox>
+			</VBox>
+		</content>
+		<beginButton/>
+		<buttons>
+			<Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+				press="_onButtonPress"/>
+			<Button text="Cancelar" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+				press="closeDialog"/>
+		</buttons>
+		<customHeader/>
+		<endButton/>
+		<subHeader/>
+	</Dialog>
+</core:FragmentDefinition>

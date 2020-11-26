@@ -1,0 +1,40 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.neo.ZODHR_SS_TIME_C.controller.Dialog5" xmlns="sap.m">
+	<Dialog horizontalScrolling="true" showHeader="true" state="None" stretch="false" title="Lançamento Banco de Hrs" type="Standard"
+		verticalScrolling="true" class="sapUiResponsiveContentPadding">
+		<content>
+			<VBox>
+				<HBox alignItems="Center">
+					<Label text="Matricula" width="100px" textDirection="Inherit"/>
+					<Input id="idPernr" textAlign="Center" width="150px" type="Text" showValueHelp="false" enabled="false"/>
+				</HBox>
+				<HBox alignItems="Center">
+					<Label text="Data" width="100px"/>
+					<DatePicker id="idData" dateValue="" width="150px" valueFormat="yyyyMMdd" editable="false"/>
+				</HBox>
+				<HBox alignItems="Center">
+					<Label text="TP Tempo" textAlign="Begin" width="100px"/>
+					<ComboBox items="{tpTempo>/table}" change="_onSelectTpTempo" editable="true" enabled="true" visible="true" width="auto" valueState="None"
+						maxWidth="150px">
+						<items>
+							<core:Item key="{tpTempo>Key}" enabled="true" text="{tpTempo>Value}"/>
+						</items>
+					</ComboBox>
+				</HBox>
+				<HBox alignItems="Center">
+					<Label text="Qta Horas" width="100px"/>
+					<Input id="idHoras" textAlign="Center" value="{}" width="80px" type="Number" showValueHelp="false" enabled="true"/>
+				</HBox>
+			</VBox>
+		</content>
+		<beginButton/>
+		<buttons>
+			<Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+				press="_onButtonPress"/>
+			<Button text="Cancelar" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+				press="closeDialog"/>
+		</buttons>
+		<customHeader/>
+		<endButton/>
+		<subHeader/>
+	</Dialog>
+</core:FragmentDefinition>

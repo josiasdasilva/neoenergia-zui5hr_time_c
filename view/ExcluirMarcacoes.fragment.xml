@@ -1,0 +1,124 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.neo.ZODHR_SS_TIME_C.controller.ExcluirMarcacoes" xmlns="sap.m"
+	xmlns:tb="sap.ui.table">
+	<Popover contentHeight="300px" contentWidth="400px" horizontalScrolling="true" modal="true" offsetX="0" offsetY="0" placement="Auto"
+		showHeader="true" title="Excluir Marcações" verticalScrolling="true" visible="true" class="sapUiResponsiveContentPadding">
+		<content>
+			<SegmentedButton id="segButExcluir" items="{path: 'marksData>/results'}" selectedKey="1" select="_onsegButExcluirPress">
+				<items>
+					<SegmentedButtonItem text="{marksData>DATA_DISPLAY}" key="{marksData>INDEX}" visible="{= ${marksData>DATA_DISPLAY} === '' ? false : true}"/>
+				</items>
+			</SegmentedButton>
+			<tb:Table id="excluirList0" width="auto" selectionMode="None" rows="{marksData>/results/0/newStructure}"
+				visible="{marksData>/results/0/VISIBLE}" title="" visibleRowCount="4">
+				<tb:columns>
+					<tb:Column width="5rem" hAlign="Center">
+						<Label text="Marcar Exclusão"/>
+						<tb:template>
+							<CheckBox selected="{marksData>diaAnt}"/>
+						</tb:template>
+					</tb:Column>
+					<tb:Column width="6rem">
+						<Label text="Marcação"/>
+						<tb:template>
+							<MaskInput mask="CC:CC" enabled="{marksData>enabledField}" value="{marksData>hora}" placeholderSymbol="_" placeholder="Enter text" editable="false">
+								<rules>
+									<MaskInputRule maskFormatSymbol="C" regex="[0-9]"/>
+								</rules>
+							</MaskInput>
+						</tb:template>
+					</tb:Column>
+					<tb:Column width="auto">
+						<Label text="Motivo"/>
+						<tb:template>
+							<ComboBox items="{markEditReasonData>/}" selectedKey="{marksData>motivo}" editable="true" enabled="true" visible="true" width="auto"
+								valueState="None" maxWidth="100%">
+								<items>
+									<core:Item text="{markEditReasonData>GTEXT}" enabled="true" key="{markEditReasonData>ABWGR}"/>
+								</items>
+							</ComboBox>
+						</tb:template>
+					</tb:Column>
+				</tb:columns>
+			</tb:Table>
+			<tb:Table id="excluirList1" width="auto" selectionMode="None" rows="{marksData>/results/1/newStructure}"
+				visible="{marksData>/results/1/VISIBLE}" title="" visibleRowCount="4">
+				<tb:columns>
+					<tb:Column width="5rem" hAlign="Center">
+						<Label text="Marcar Exclusão"/>
+						<tb:template>
+							<CheckBox selected="{marksData>diaAnt}"/>
+						</tb:template>
+					</tb:Column>
+					<tb:Column width="6rem">
+						<Label text="Marcação"/>
+						<tb:template>
+							<MaskInput mask="CC:CC" enabled="{marksData>enabledField}" value="{marksData>hora}" placeholderSymbol="_" placeholder="Enter text" editable="false">
+								<rules>
+									<MaskInputRule maskFormatSymbol="C" regex="[0-9]"/>
+								</rules>
+							</MaskInput>
+						</tb:template>
+					</tb:Column>
+					<tb:Column width="auto">
+						<Label text="Motivo"/>
+						<tb:template>
+							<ComboBox items="{markEditReasonData>/}" selectedKey="{marksData>motivo}" editable="true" enabled="true" visible="true" width="auto"
+								valueState="None" maxWidth="100%">
+								<items>
+									<core:Item text="{markEditReasonData>GTEXT}" enabled="true" key="{markEditReasonData>ABWGR}"/>
+								</items>
+							</ComboBox>
+						</tb:template>
+					</tb:Column>
+				</tb:columns>
+			</tb:Table>
+			<tb:Table id="excluirList2" width="auto" selectionMode="None" rows="{marksData>/results/2/newStructure}"
+				visible="{marksData>/results/2/VISIBLE}" title="" visibleRowCount="4">
+				<tb:columns>
+					<tb:Column width="5rem" hAlign="Center">
+						<Label text="Marcar Exclusão"/>
+						<tb:template>
+							<CheckBox selected="{marksData>diaAnt}"/>
+						</tb:template>
+					</tb:Column>
+					<tb:Column width="6rem">
+						<Label text="Marcação"/>
+						<tb:template>
+							<MaskInput mask="CC:CC" enabled="{marksData>enabledField}" value="{marksData>hora}" placeholderSymbol="_" placeholder="Enter text" editable="false">
+								<rules>
+									<MaskInputRule maskFormatSymbol="C" regex="[0-9]"/>
+								</rules>
+							</MaskInput>
+						</tb:template>
+					</tb:Column>
+					<tb:Column width="auto">
+						<Label text="Motivo"/>
+						<tb:template>
+							<ComboBox items="{markEditReasonData>/}" selectedKey="{marksData>motivo}" editable="true" enabled="true" visible="true" width="auto"
+								valueState="None" maxWidth="100%">
+								<items>
+									<core:Item text="{markEditReasonData>GTEXT}" enabled="true" key="{markEditReasonData>ABWGR}"/>
+								</items>
+							</ComboBox>
+						</tb:template>
+					</tb:Column>
+				</tb:columns>
+			</tb:Table>
+		</content>
+		<beginButton/>
+		<customHeader/>
+		<endButton/>
+		<footer>
+			<OverflowToolbar width="auto" height="46px" design="Auto" visible="true" enabled="true">
+				<content>
+					<ToolbarSpacer width=""/>
+					<Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+						press="_onButtonPress"/>
+					<Button text="Cancelar" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+						press="_onButtonPress1"/>
+				</content>
+			</OverflowToolbar>
+		</footer>
+		<subHeader/>
+	</Popover>
+</core:FragmentDefinition>

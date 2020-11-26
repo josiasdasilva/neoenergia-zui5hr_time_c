@@ -1,0 +1,68 @@
+<core:FragmentDefinition xmlns:core="sap.ui.core" controllerName="com.neo.ZODHR_SS_TIME_C.controller.Dialog1" xmlns="sap.m">
+	<Dialog afterClose="onAfterCloseDialog" horizontalScrolling="true" showHeader="true" state="None" stretch="false"
+		title="Lançamento de Ausência" type="Standard" verticalScrolling="true" class="sapUiResponsiveContentPadding">
+		<content>
+			<HBox alignItems="Center">
+				<Label text="Data:" design="Standard" width="115px" required="false" textAlign="Left" textDirection="Inherit" visible="true"/>
+				<Input id="begda" width="100px" enabled="false" visible="true"/>
+				<Label text=" até: " design="Standard" width="50px" required="false" textAlign="Center" textDirection="Inherit" visible="true"/>
+				<Input id="endda" width="100px" enabled="true" visible="true"/>
+			</HBox>
+			<HBox alignItems="Center">
+				<Label text="Justificativa:" design="Standard" width="82px" required="true" textAlign="Left" textDirection="Inherit" visible="true"/>
+				<ComboBox items="{justificationData>/}" selectionChange="_onSelectJustification" id="justificationCombobox1" selectedKey=""
+					placeholder="Selecionar Justificativa..." editable="true" required="true" enabled="true" visible="true" width="250px" valueState="None"
+					class="sapUiResponsiveMargin">
+					<items>
+						<core:Item text="{justificationData>ATEXT}" enabled="true" key="{justificationData>AWART}"/>
+					</items>
+				</ComboBox>
+			</HBox>
+			<HBox alignItems="Center">
+				<Label text="Horas:" design="Standard" width="115px" textAlign="Left" textDirection="Inherit" visible="true"/>
+				<TimePicker id="beghour" valueFormat="hh:mm" width="150px" displayFormat="HH:mm"/>
+				<Label text="até" design="Standard" width="50px" textAlign="Center" textDirection="Inherit" visible="true"/>
+				<TimePicker id="endhour" valueFormat="HH:mm" width="150px" displayFormat="HH:mm"/>
+			</HBox>
+			<HBox alignItems="Center">
+				<Label text="Horas ausência:" design="Standard" width="115px" textAlign="Left" textDirection="Inherit" visible="true"/>
+				<Input id="horas" textAlign="Center" value="{}" width="100px" type="Number" showValueHelp="false" enabled="true"/>
+			</HBox>
+		<UploadCollection id="UploadCollection" 
+		maximumFilenameLength="50" 
+		maximumFileSize="2" 
+		multiple="false" 
+		change="onChangeAttachment"
+			items="{ path: 'Attachments>/table' }" 
+			uploadComplete="onUploadComplete" 
+			beforeUploadStarts="onBeforeUpload"
+			fileType="{uploadOptions>/selected}" 
+			instantUpload="false" 
+			noDataDescription="Mova o Arquivo ou Insira um clicando no botão &quot;+&quot;"
+			filenameLengthExceed="onFilenameLengthExceed" 
+			uploadEnabled="{uploadOptions>/uploadEnabled}" 
+			fileSizeExceed="onFileSizeExceed">
+			<items>
+				<UploadCollectionItem documentId="{Attachments>documentId}" 
+				fileName="{Attachments>Filename}" 
+				mimeType="{Attachments>Mimetype}"
+					url="{Attachments>Url}" 
+					enableEdit="false" 
+					enableDelete="{Attachments>Delete}" 
+					visibleDelete="{Attachments>Delete}" 
+					visibleEdit="false"></UploadCollectionItem>
+				</items>
+			</UploadCollection>
+		</content>
+		<beginButton/>
+		<buttons>
+			<Button text="Gravar" type="Emphasized" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+				press="_onButtonPress"/>
+			<Button text="Cancelar" type="Default" iconFirst="true" width="auto" enabled="true" visible="true" iconDensityAware="false"
+				press="_onButtonPress1"/>
+		</buttons>
+		<customHeader/>
+		<endButton/>
+		<subHeader/>
+	</Dialog>
+</core:FragmentDefinition>
