@@ -38,7 +38,7 @@ sap.ui.define([
 					me.getView().setBusy(false);
 					sap.ui.core.BusyIndicator.hide();
 					var msgText = "";
-
+//Tiago
 					switch (true) {
 						case oResponse.headers.location.includes("CabecalhoDeepJustPadraoSet"):
 							msgText = "Ocorrências tratadas com sucesso!";
