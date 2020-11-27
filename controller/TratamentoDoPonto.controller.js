@@ -951,7 +951,7 @@ sap.ui.define([
 
 			var param = "/HorasExtrasSet(PERNR='" + oHeader.NumeroPessoal + "',DATA='" + oData.Data + "')";
 			sap.ui.core.BusyIndicator.show();
-			this.sendCreateModel(obj, param);
+			this.sendUpdateModel(obj, param);
 
 		},
 
