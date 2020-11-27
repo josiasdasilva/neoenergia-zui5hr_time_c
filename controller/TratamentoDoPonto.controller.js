@@ -38,7 +38,7 @@ sap.ui.define([
 					me.getView().setBusy(false);
 					sap.ui.core.BusyIndicator.hide();
 					var msgText = "";
-//Tiago
+					//Tiago
 					switch (true) {
 						case oResponse.headers.location.includes("CabecalhoDeepJustPadraoSet"):
 							msgText = "Ocorrências tratadas com sucesso!";
@@ -122,6 +122,9 @@ sap.ui.define([
 						case oResponse.headers.location.includes("BancoHorasSet"):
 							msgText = "Horas de Banco inserido com sucesso!";
 							break;
+						case oResponse.headers.location.includes("HorasExtrasSet"):
+							msgText = "Horas Extra inserida com sucesso!";
+							break;
 					}
 
 					var dialog = new sap.m.Dialog({
@@ -146,6 +149,10 @@ sap.ui.define([
 					me.reloadAppData(oResponse);
 				},
 				function(err) {
+
+					var body = JSON.parse(err.response.body);
+					var message = body.error.message.value;
+
 					me.getView().setBusy(false);
 					sap.ui.core.BusyIndicator.hide();
 					var dialog = new sap.m.Dialog({
@@ -153,7 +160,7 @@ sap.ui.define([
 						type: "Message",
 						state: "Error",
 						content: new sap.m.Text({
-							text: JSON.parse(err.responseText).error.message.value
+							text: message
 						}),
 						beginButton: new sap.m.Button({
 							text: "OK",
@@ -165,7 +172,9 @@ sap.ui.define([
 							dialog.destroy();
 						}
 					});
+
 					dialog.open();
+
 				}
 			);
 			me.getView().setBusy(false);
@@ -923,7 +932,7 @@ sap.ui.define([
 			};
 			var param = "/BancoHorasSet('" + oHeader.NumeroPessoal + "')";
 			sap.ui.core.BusyIndicator.show();
-			this.sendCreateModel(obj, param);
+			this.sendUpdateModel(obj, param);
 
 		},
 
