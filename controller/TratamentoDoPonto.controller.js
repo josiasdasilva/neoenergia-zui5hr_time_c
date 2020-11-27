@@ -116,16 +116,7 @@ sap.ui.define([
 				function(oData, oResponse) {
 					me.getView().setBusy(false);
 					sap.ui.core.BusyIndicator.hide();
-					var msgText = "";
-
-					switch (true) {
-						case oResponse.headers.location.includes("BancoHorasSet"):
-							msgText = "Horas de Banco inserido com sucesso!";
-							break;
-						case oResponse.headers.location.includes("HorasExtrasSet"):
-							msgText = "Horas Extra inserida com sucesso!";
-							break;
-					}
+					var msgText = "Registro inserido com sucesso!";
 
 					var dialog = new sap.m.Dialog({
 						title: "Successo",
