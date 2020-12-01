@@ -6,7 +6,7 @@ sap.ui.define([
 	"com/neo/ZODHR_SS_TIME_C/webServices/connections",
 	"sap/ui/model/json/JSONModel"
 ], function(ManagedObject, MessageBox, Utilities, History, connections, JSONModel) {
-
+//teste
 	return ManagedObject.extend("com.neo.ZODHR_SS_TIME_C.controller.Dialog5", {
 
 		getJustificationData: function() {
@@ -94,7 +94,7 @@ sap.ui.define([
 				mesF = (mes.length == 1) ? "0" + mes : mes,
 				anoF = data.getFullYear();
 
-			if (mesF === 13) {
+			if (mesF === "13") {
 				mesF = "01";
 				anoF++;
 			}
